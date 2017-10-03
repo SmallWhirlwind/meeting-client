@@ -1,10 +1,12 @@
 ---
-- name: build a Jenkins Service
+- name: build a front Service
   hosts: test_vagrant
   sudo: true
   remote_user: vagrant
   tasks:
     - name: Copy front package
       copy:
-        src: ../frontend/dist.tar
-        dest: /var
+        src: ../build/client_build.tar
+        dest: /home/meet/
+    - name: tar xvf front package
+      command: tar xvf /home/meet/client_build.tar

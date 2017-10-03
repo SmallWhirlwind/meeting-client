@@ -1,4 +1,4 @@
----
+  ---
 - name: build a Jenkins Service
   hosts: test_vagrant
   sudo: true
