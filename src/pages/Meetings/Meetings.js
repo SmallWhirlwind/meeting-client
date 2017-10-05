@@ -138,7 +138,7 @@ var Meetings = React.createClass({
 
 
 	getMeetings: function() {
-	  return axios.get('http://192.168.33.10:80/meetings');
+	  return axios.get('http://192.168.33.10:8080/meetings');
 	},
 
 	getDepartments: function() {
