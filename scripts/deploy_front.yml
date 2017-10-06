@@ -6,7 +6,7 @@
   tasks:
     - name: Copy front package
       copy:
-        src: ../build/client_build.tar
+        src: ../client_build.tar
         dest: /home/meet/
     - name: tar xvf front package
       command: tar xvf /home/meet/client_build.tar
