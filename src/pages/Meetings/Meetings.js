@@ -138,11 +138,11 @@ var Meetings = React.createClass({
 
 
 	getMeetings: function() {
-	  return axios.get('http://192.168.33.10:80/meetings');
+	  return axios.get('http://192.168.33.80:8090/meetings');
 	},
 
 	getDepartments: function() {
-	  return axios.get('http://localhost:8080/departments');
+	  return axios.get('http://192.168.33.80:8090/departments');
 	},
 	
 	//Get table data and update the state to render
