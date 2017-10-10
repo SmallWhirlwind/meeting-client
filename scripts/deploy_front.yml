@@ -17,7 +17,7 @@
         src: ../client_build.tar
         dest: /var
     - name: tar xvf front package
-      command: tar xvf /var/client_build.tar
+      command: tar xvf /var/client_build.tar -C /var
     - name: Copy deploy shell script
       copy:
         src: ./deploy_front.sh
