@@ -10,5 +10,9 @@
         dest: /home/meet/
     - name: tar xvf front package
       command: tar xvf /home/meet/client_build.tar
+    - name: Copy project jar
+      copy:
+        src: ./deploy_jar.sh
+        dest: /var
     - name: run front package
-      command: sh deploy_front.sh
+      command: sh /var/deploy_front.sh
