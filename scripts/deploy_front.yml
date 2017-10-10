@@ -4,15 +4,23 @@
   sudo: true
   remote_user: vagrant
   tasks:
-    - name: Copy front package
+    - name: Remove directory structure
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /var/client_build.tar
+        - /var/build
+        - /var/deploy_front.sh
+    - name: Copy front tar
       copy:
         src: ../client_build.tar
-        dest: /home/meet/
+        dest: /var
     - name: tar xvf front package
-      command: tar xvf /home/meet/client_build.tar
-    - name: Copy project jar
+      command: tar xvf /var/client_build.tar
+    - name: Copy deploy shell script
       copy:
         src: ./deploy_front.sh
         dest: /var
-    - name: run front package
-      command: sh /var/deploy_front.sh
+#    - name: run front package
+#      command: sh /var/deploy_front.sh

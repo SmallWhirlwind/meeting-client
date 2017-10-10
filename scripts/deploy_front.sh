@@ -7,4 +7,4 @@ fi
 
 sleep 60
 
-nohup pushstate-server /home/meet/build &
+nohup pushstate-server /var/build &
