@@ -3,17 +3,22 @@ node {
         git 'https://github.com/SmallWhirlwind/meeting-client.git'
     }
     stage('Depenance install') {
-        sh '''npm install
-        npm install axios'''
+        docker.image('node').inside {
+            sh '''npm install
+            npm install axios'''
+        }
     }
     stage('Build Server') {
-        sh '''npm run build'''
+        docker.image('node').inside {
+            sh '''npm run build'''
+        }
     }
-    stage('Get tar package') {
-        sh '''tar cvf client_build.tar build'''
+    stage('Build Docker Images') {
+            sh '''docker build -t 192.168.33.80:5000/meeting_client:${BUILD_NUMBER} .
+            docker push 192.168.33.80:5000/meeting_client:${BUILD_NUMBER}'''
     }
-    stage('Deploy tar package to service') {
+    stage('Deploy To Server') {
         sh '''cd scripts
-        sudo ansible-playbook deploy_front.yml'''
+           sudo ansible-playbook -e BUILDNUMBER=${BUILD_NUMBER} -i hosts deploy.yml'''
     }
 }
